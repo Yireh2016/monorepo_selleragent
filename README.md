@@ -40,5 +40,12 @@ docker-compose up --build
 
 > Changes to your code will be reflected automatically in the running containers.
 
+## API Documentation (Swagger/OpenAPI)
+After starting the backend, you can view the interactive API docs at:
+
+- Swagger UI: http://localhost:8000/api/schema/swagger-ui/
+- ReDoc: http://localhost:8000/api/schema/redoc/
+- Raw OpenAPI schema (JSON): http://localhost:8000/api/schema/
+
 ## Communication
 Use REST APIs or similar to connect frontend and backend.
