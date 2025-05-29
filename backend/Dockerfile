@@ -9,11 +9,8 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Install dependencies
-COPY backend/requirements.txt /app/requirements.txt
+COPY . /app
 RUN pip install --upgrade pip && pip install -r requirements.txt
-
-# Copy project
-COPY backend /app
 
 # Expose port 8000 for Django
 EXPOSE 8000

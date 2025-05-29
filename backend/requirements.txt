@@ -4,4 +4,4 @@ dj-rest-auth
 django-allauth
 drf-spectacular
 requests
-rest_framework_simplejwt
+djangorestframework-simplejwt

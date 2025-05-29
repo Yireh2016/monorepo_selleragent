@@ -35,17 +35,19 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',  # Required by dj-rest-auth
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third-party apps
-    'rest_framework',
+    'rest_framework', # djangorestframework
     'rest_framework.authtoken',
-    'dj_rest_auth',
+    'dj_rest_auth', # Drop-in API endpoints for handling authentication securely in Django Rest Framework
     'dj_rest_auth.registration',
-    'allauth',
+    'allauth', # email verification
     'allauth.account',
     'allauth.socialaccount',
-    'drf_spectacular',
+    'drf_spectacular', # openapi
+    'rest_framework_simplejwt', # simple jwt
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware'
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'src.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = 'src.wsgi.application'
 
 
 # Database
@@ -140,9 +142,10 @@ SITE_ID = 1
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
@@ -157,3 +160,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_SIGNUP_FIELDS = ['username', 'email*', 'password1*', 'password2*']
 ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"

@@ -25,8 +25,9 @@ npm run test
 ### Backend
 ```sh
 cd backend
-python manage.py migrate
-python manage.py runserver
+source venv/bin/activate # activate virtual env
+python3 manage.py migrate
+python3 manage.py runserver
 ```
 
 ## Running with Docker Compose
